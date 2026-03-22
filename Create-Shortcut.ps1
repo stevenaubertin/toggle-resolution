@@ -5,8 +5,14 @@ param(
     [string]$HotKey = "Ctrl+Alt+R"
 )
 
+$ErrorActionPreference = 'Stop'
+
 # Get paths
 $scriptPath = "$PSScriptRoot\Toggle-Resolution.ps1"
+
+if (-not (Test-Path $scriptPath)) {
+    throw "Toggle-Resolution.ps1 not found at '$scriptPath'."
+}
 $desktopPath = [System.Environment]::GetFolderPath('Desktop')
 $shortcutPath = "$desktopPath\Toggle-Resolution.lnk"
 
