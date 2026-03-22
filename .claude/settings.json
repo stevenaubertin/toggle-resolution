@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/.claude/settings.schema.json",
+  "_comment": "Claude Code settings for PowerShell projects",
+  "hooks": {
+    "PreCommit": [
+      {
+        "command": "pwsh -Command \"Invoke-ScriptAnalyzer -Path . -Recurse -EnableExit\""
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "pwsh -Command",
+      "pwsh -File",
+      "Invoke-Pester",
+      "shellcheck"
+    ],
+    "deny": [
+      "pwsh -Command \"Remove-Item -Recurse -Force /\"",
+      "Set-ExecutionPolicy Unrestricted",
+      "pwsh -Command \"Stop-Service\""
+    ]
+  }
+}
